@@ -7,57 +7,38 @@ import { CodeforcesService } from './services/codeforces.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit { // export class AppComponent {
   title = 'codeforces-custom-ranking';
 
-  public members: any[] = ['jorgektch', 'cat_ta4', 'lauranotfound', 'luiz2002'];
+  public displayedColumns: string[] = ['position', 'handle', 'rating'];
   public dataset: any[] = [];
+  public members: any[] = ['jorgektch', 'cat_ta4', 'lauranotfound', 'luiz2002'];
 
   constructor(
     private codeforcesService: CodeforcesService,
   ){}
-
+  
   ngOnInit(): void {
-    console.log("Antes de llamar a getData");
     this.getData(this.members);
   }
 
   private getData(members: any[]) {
     for (let member of this.members) {
-      console.log(member); // prints values: 10, 20, 30, 40
-
       this.codeforcesService.getData(member).subscribe(
         (response) => {
           //this.universities = response.data;
-          this.dataset.push({'handleCodeforces': member, 'rating': response.result});
-          console.log("xddddddddddddddd");
-          console.log(this.dataset);
+          //this.dataset.push({'position': NaN, 'handle': member, 'rating': response.result.at(-1).newRating});
+          this.dataset.push({'handle': member, 'rating': response.result.at(-1).newRating});
         },
         (error) => {
           console.log('Something went wrong: ', error);
         }
       );
     }
-    console.log("dataset antes de ordenar: --------------");
-    console.log(this.dataset);
-    this.dataset.sort((a, b) => a.rating.at(-1).newRating - b.rating.at(-1).newRating);
+    // Sort
+    this.dataset.sort((a, b) => a.rating - b.rating);
     console.log("dataset luego de ordenar: --------------");
     console.log(this.dataset);
-    /*
-    this.codeforcesService.getData(handleCodefoces).subscribe(
-      (response) => {
-        //this.universities = response.data;
-        for (var val of this.members) {
-          console.log(val); // prints values: 10, 20, 30, 40
-        }
-        this.dataset = response.result;
-        console.log("xddddddddddddddd");
-        console.log(this.dataset);
-      },
-      (error) => {
-        console.log('Something went wrong: ', error);
-      }
-    );
-    */
   }
 }
