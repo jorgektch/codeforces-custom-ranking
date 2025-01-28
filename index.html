@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codeforces API App</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codeforces Ranking</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Codeforces User Info</h1>
-        <form id="userForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <button type="submit">Get Info</button>
-        </form>
-        <div id="userInfo"></div>
-    </div>
-    <script src="app.js"></script>
+  <div class="container">
+    <h1>Codeforces Ranking</h1>
+    <table id="ranking-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Rating</th>
+          <th>Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Datos se cargarán dinámicamente aquí -->
+      </tbody>
+    </table>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
