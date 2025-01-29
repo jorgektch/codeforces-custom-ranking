@@ -146,7 +146,7 @@ async function updateRanking() {
 
     // Paso 4: Mostrar la fecha, hora y zona horaria
     const footer = document.querySelector('#footer-info');
-    footer.textContent = `Información obtenida el ${formatDate()}`;
+    footer.textContent = `Information obtained on ${formatDate()}`;
 
     // Paso 5: Preparar los datos para el gráfico
     // Definir los límites de rating según los ranks de Codeforces
