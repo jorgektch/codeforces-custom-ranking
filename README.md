@@ -27,6 +27,11 @@ This project is a custom ranking system for Codeforces users that fetches the us
 - `users.json`: A JSON file containing the list of Codeforces handles that will be used to fetch data.
 
 ## Dependencies
+
 - Chart.js: A library for creating charts.
 - CryptoJS: A library for hashing.
 Both libraries are included in the index.html file through CDN links.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
