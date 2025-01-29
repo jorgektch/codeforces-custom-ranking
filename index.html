@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Codeforces Ranking</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking de Codeforces</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="container">
-    <h1>Codeforces Ranking</h1>
-    <table id="ranking-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Username</th>
-          <th>Rating</th>
-          <th>Level</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Datos se cargarán dinámicamente aquí -->
-      </tbody>
+
+    <div id="loader" style="display:none;">
+        Cargando datos...
+    </div>
+
+    <table id="rankingTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Rating</th>
+                <th>Rank</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
     </table>
-  </div>
-  <script src="script.js"></script>
+
+    <div id="footer-info"></div>
+
+    <canvas id="ratingChart"></canvas>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
+
 </html>

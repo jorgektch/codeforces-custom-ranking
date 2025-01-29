@@ -1,67 +1,42 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 50px auto;
-    text-align: center;
-  }
-  
-  h1 {
-    color: #343a40;
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #dee2e6;
-  }
-  
-  thead {
-    background-color: #343a40;
-    color: #ffffff;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f1f3f5;
-  }
-  
-  tbody tr:nth-child(odd) {
-    background-color: #ffffff;
-  }
-  
-  .level-novice {
-    color: gray;
-  }
-  
-  .level-pupil {
-    color: green;
-  }
-  
-  .level-specialist {
-    color: blue;
-  }
-  
-  .level-expert {
-    color: purple;
-  }
-  
-  .level-master {
-    color: orange;
-  }
-  
-  .level-grandmaster {
-    color: red;
-  }
-  
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+#loader {
+  font-size: 20px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+td a {
+  text-decoration: none;
+}
+
+#footer-info {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+#ratingChart {
+  width: 100%;
+  height: 400px;
+  margin-top: 30px;
+}
