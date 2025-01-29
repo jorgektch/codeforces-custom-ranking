@@ -79,7 +79,7 @@ async function updateRanking() {
     for (const handle of users) {
         const userInfo = await fetchRating(handle);
         usersProcessed++;
-        
+
         // Actualizar el porcentaje en el loader
         const percentage = Math.round((usersProcessed / users.length) * 100);
         loader.textContent = `Cargando datos... ${percentage}%`; // Actualizar el mensaje
@@ -119,14 +119,14 @@ async function updateRanking() {
         handleLink.addEventListener('mouseover', () => {
             handleLink.style.textDecoration = 'underline'; // Aplica subrayado al pasar el cursor
         });
-        
+
         handleLink.addEventListener('mouseout', () => {
             handleLink.style.textDecoration = 'none'; // Elimina el subrayado al quitar el cursor
         });
-        
+
         // Aplicar el color correspondiente al rating en la celda de username
         handleCell.appendChild(handleLink);
-        
+
 
         ratingCell.textContent = user.rating !== null ? user.rating : 'Sin rating';
         rankCell.textContent = user.rank;
@@ -147,13 +147,30 @@ async function updateRanking() {
     footer.textContent = `Información obtenida el ${formatDate()}`;
 
     // Paso 5: Preparar los datos para el gráfico
+    // Definir los límites de rating según los ranks de Codeforces
+    const ratingLimits = [
+        { rating: 4000, label: 'Eponym', color: '#ff0000' },
+        { rating: 3000, label: 'Legendary Grandmaster', color: '#ff0000' },
+        { rating: 2600, label: 'International Grandmaster', color: '#ff0000' },
+        { rating: 2400, label: 'Grandmaster', color: '#ff0000' },
+        { rating: 2300, label: 'International Master', color: '#FF8C00' },
+        { rating: 2100, label: 'Master', color: '#FF8C00' },
+        { rating: 1900, label: 'Candidate Master', color: '#a0a' },
+        { rating: 1600, label: 'Expert', color: '#0000ff' },
+        { rating: 1400, label: 'Specialist', color: '#03a89e' },
+        { rating: 1200, label: 'Pupil', color: '#008000' },
+        { rating: 0, label: 'Newbie', color: '#808080' }
+    ];
+
+    // Preparar los datos del gráfico
     const chartLabels = ratings.map(user => user.handle);
     const chartData = ratings.map(user => user.rating);
     const chartColors = ratings.map(user => user.color);
 
+    // Crear el gráfico de barras con Chart.js
     const ctx = document.getElementById('ratingChart').getContext('2d');
     new Chart(ctx, {
-        type: 'bar', // Cambiar el tipo de gráfico a barras
+        type: 'bar', // Cambiar a gráfico de barras verticales
         data: {
             labels: chartLabels,
             datasets: [{
@@ -166,17 +183,48 @@ async function updateRanking() {
         },
         options: {
             responsive: true,
-            indexAxis: 'y', // Esto cambia el gráfico de barras horizontal a vertical
+            indexAxis: 'y', // Establecer la orientación de las barras en horizontal
             scales: {
-                x: {  // Eje X para los valores
-                    beginAtZero: true
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Rating'
+                    }
                 },
-                y: {  // Eje Y para los usuarios
-                    beginAtZero: true
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'User Handle'
+                    }
+                }
+            },
+            plugins: {
+                annotation: {
+                    annotations: ratingLimits.map((range) => ({
+                        type: 'line',
+                        mode: 'vertical', // Líneas verticales
+                        scaleID: 'x', // Usar el eje X para las líneas
+                        value: range.rating, // El valor de rating donde la línea se debe colocar
+                        borderColor: range.color, // El color de la línea basado en el rango
+                        borderWidth: 2,
+                        label: {
+                            content: range.label, // Mostrar el nombre del rango
+                            enabled: true,
+                            position: 'top',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            color: range.color
+                        }
+                    }))
                 }
             }
         }
     });
+
 
     // Ocultar el loader una vez que los datos se hayan cargado
     loader.style.display = 'none';
