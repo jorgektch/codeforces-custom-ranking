@@ -162,6 +162,16 @@ async function updateRanking() {
         { rating: 0, label: 'Newbie', color: '#808080' }
     ];
 
+    // Obtener el usuario con el mayor rating
+    const maxRatingUser = ratings.reduce((max, user) => (user.rating > max.rating ? user : max), ratings[0]);
+
+    // Determinar el label correspondiente para el usuario con el mayor rating
+    let userRank = ratingLimits.find(rank => maxRatingUser.rating >= rank.rating).label;
+
+    // Determinar los rangos a mostrar (el rango actual y los dos superiores)
+    let rankIndex = ratingLimits.findIndex(rank => rank.label === userRank);
+    let ranksToShow = ratingLimits.slice(Math.max(0, rankIndex - 2), rankIndex + 1);
+
     // Preparar los datos del gráfico
     const chartLabels = ratings.map(user => user.handle);
     const chartData = ratings.map(user => user.rating);
@@ -202,7 +212,7 @@ async function updateRanking() {
             },
             plugins: {
                 annotation: {
-                    annotations: ratingLimits.map((range) => ({
+                    annotations: ranksToShow.map((range) => ({
                         type: 'line',
                         mode: 'vertical', // Líneas verticales
                         scaleID: 'x', // Usar el eje X para las líneas
@@ -224,6 +234,11 @@ async function updateRanking() {
             }
         }
     });
+
+
+
+
+
 
 
     // Ocultar el loader una vez que los datos se hayan cargado
