@@ -28,9 +28,9 @@ This project is a custom ranking system for Codeforces users that fetches the us
 
 ## Dependencies
 
-- Chart.js: A library for creating charts.
-- CryptoJS: A library for hashing.
-Both libraries are included in the index.html file through CDN links.
+- [Chart.js](https://www.chartjs.org/): A JavaScript library for creating interactive charts.
+- [crypto-js](https://github.com/brix/crypto-js): A library for cryptographic algorithms (used for hashing in API requests).
+- [Chart.js Plugin - Annotation](https://github.com/chartjs/chartjs-plugin-annotation): A plugin for Chart.js to add annotations such as lines, boxes, etc.
 
 ## License
 
