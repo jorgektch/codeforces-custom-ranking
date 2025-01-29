@@ -11,3 +11,10 @@ This project is a custom ranking system for Codeforces users that fetches the us
 - Displays a loading message during data fetching.
 - Shows the date and time when the data was fetched.
 
+## Technologies Used
+
+- **HTML**: Structure of the webpage.
+- **CSS**: Styling the webpage.
+- **JavaScript**: Fetches and processes user data from the Codeforces API, updates the table, and creates the bar chart.
+- **Chart.js**: Used for creating the bar chart to visualize the user rankings.
+- **CryptoJS**: Used for generating the signature for the Codeforces API request.
