@@ -153,7 +153,7 @@ async function updateRanking() {
 
     const ctx = document.getElementById('ratingChart').getContext('2d');
     new Chart(ctx, {
-        type: 'bar',
+        type: 'bar', // Cambiar el tipo de gráfico a barras
         data: {
             labels: chartLabels,
             datasets: [{
@@ -166,8 +166,12 @@ async function updateRanking() {
         },
         options: {
             responsive: true,
+            indexAxis: 'y', // Esto cambia el gráfico de barras horizontal a vertical
             scales: {
-                y: {
+                x: {  // Eje X para los valores
+                    beginAtZero: true
+                },
+                y: {  // Eje Y para los usuarios
                     beginAtZero: true
                 }
             }
