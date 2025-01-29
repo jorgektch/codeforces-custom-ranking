@@ -25,3 +25,8 @@ This project is a custom ranking system for Codeforces users that fetches the us
 - `styles.css`: The CSS file that provides the styling of the page.
 - `script.js`: JavaScript file that contains the logic for fetching data, populating the table, and rendering the chart.
 - `users.json`: A JSON file containing the list of Codeforces handles that will be used to fetch data.
+
+## Dependencies
+- Chart.js: A library for creating charts.
+- CryptoJS: A library for hashing.
+Both libraries are included in the index.html file through CDN links.
