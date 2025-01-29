@@ -213,6 +213,9 @@ async function updateRanking() {
                 }
             },
             plugins: {
+                legend: {
+                    display: false // Oculta la leyenda
+                },
                 annotation: {
                     annotations: ranksToShow.map((range) => ({
                         type: 'line',
