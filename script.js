@@ -113,6 +113,8 @@ async function updateRanking() {
         // Crear el hipervínculo para el nombre de usuario
         const handleLink = document.createElement('a');
         handleLink.textContent = user.handle;
+        handleLink.style.fontWeight = 'bold'; // Aplicar negrita
+
         handleLink.href = `https://codeforces.com/profile/${user.handle}`;
         handleLink.target = '_blank';
         handleLink.style.color = user.color;
